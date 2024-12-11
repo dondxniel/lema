@@ -20,5 +20,5 @@ export function variantStyle(variant: TButtonVariant): string {
  * @returns A string representing the tailwind class.
  */
 export function disabledStyle(isDisabled: boolean): string {
-	return isDisabled ? 'opacity-50' : '';
+	return isDisabled ? 'opacity-50 cursor-not-allowed' : '';
 }

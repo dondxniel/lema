@@ -4,4 +4,5 @@ frontend/node_modules
 backend/node_modules
 
 # compiled
-dist
+frontend/dist
+backend/dist

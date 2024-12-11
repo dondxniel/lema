@@ -5,7 +5,7 @@ import {
 } from '../types/layouts.types';
 
 export function layoutTitleFontSize(size?: TTitleSize) {
-	if (size === 'lg') return 'text-7xl';
+	if (size === 'lg') return 'text-5xl md:text-7xl';
 	if (size === 'md') return 'text-4xl';
 	return '';
 }

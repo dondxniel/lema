@@ -13,7 +13,7 @@ const Pagination = ({
 
 	return (
 		<div
-			className={`text-[#717680] text-sm flex items-center justify-center space-x-2 ${
+			className={`text-[#717680] text-sm flex flex-col md:flex-row items-center justify-center space-x-1 md:space-x-2 ${
 				disable && 'opacity-50'
 			}`}
 		>
@@ -25,24 +25,26 @@ const Pagination = ({
 				Previous
 			</Button>
 
-			{pages.map((page, index) =>
-				page === '...' ? (
-					<span key={index} className='px-2'>
-						...
-					</span>
-				) : (
-					<Button
-						key={index}
-						className={`py-2 px-4 rounded ${
-							current === page ? 'bg-[#F9F5FF]' : ''
-						}`}
-						onClick={() => onPageChange(page)}
-						disabled={disable}
-					>
-						{page}
-					</Button>
-				)
-			)}
+			<div className='flex items-center justify-center space-x-1 md:space-x-2'>
+				{pages.map((page, index) =>
+					page === '...' ? (
+						<span key={index} className='px-2'>
+							...
+						</span>
+					) : (
+						<Button
+							key={index}
+							className={`py-1 px-2 md:py-2 md:px-4 rounded ${
+								current === page ? 'bg-[#F9F5FF]' : ''
+							}`}
+							onClick={() => onPageChange(page)}
+							disabled={disable}
+						>
+							{page}
+						</Button>
+					)
+				)}
+			</div>
 
 			<Button
 				onClick={() => onPageChange((current as number) + 1)}

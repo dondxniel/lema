@@ -36,7 +36,7 @@ export default function Table({
 					</table>
 				)}
 			</div>
-			<div className='py-5 flex justify-end'>
+			<div className='py-5 flex justify-center md:justify-end'>
 				<Pagination
 					disable={loading}
 					total={totalPages}

@@ -12,23 +12,17 @@ export default function CardLayout({
 	return (
 		<div
 			onClick={onClick}
-			className={`border ${cardLayoutBorderType(
+			className={`border border-[#D5D7DA] relative space-y-4 ${cardLayoutBorderType(
 				borderType
-			)} rounded-lg p-6 pt-0 pr-2 text-sm flex flex-col ${
+			)} rounded-lg p-6 pb-[17px] text-sm flex flex-col ${
 				onClick ? 'cursor-pointer' : ''
 			} ${className}`}
 		>
-			{top && <div className='mb-4 ml-4'>{top}</div>}
-			{title && (
-				<div className='text-[18px] font-semibold mb-4'>{title}</div>
-			)}
-			<div
-				className={`pr-4 w-full flex-1 flex flex-col overflow-hidden ${
-					!top ? 'pt-4' : ''
-				}`}
-			>
+			{title && <div className='text-[18px] font-[500]'>{title}</div>}
+			<div className={`w-full flex-1 flex flex-col overflow-hidden`}>
 				{children}
 			</div>
+			{top && <div className='absolute -top-1.5 right-1.5'>{top}</div>}
 		</div>
 	);
 }

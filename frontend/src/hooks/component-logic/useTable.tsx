@@ -1,5 +1,6 @@
 import _ from 'lodash'; // Importing Lodash for string manipulation
 import { ReactNode } from 'react'; // Importing ReactNode for typing
+import { TDisplayedFields } from '../../types/utilities.types';
 import { filterFields } from '../../utils/table.utils';
 
 /**
@@ -10,7 +11,7 @@ import { filterFields } from '../../utils/table.utils';
 export default function useTable(
 	data: Record<string, string>[] = [],
 	onRowClick?: Function | ((_: (typeof data)[0]) => void),
-	displayedFields?: string[]
+	displayedFields?: TDisplayedFields[]
 ) {
 	const filteredData = filterFields(displayedFields, data);
 
@@ -37,9 +38,11 @@ export default function useTable(
 						? () => onRowClick(arg as (typeof data)[0])
 						: undefined
 				}
-				className={`${isBodyRow ? 'h-[72px]' : 'h-11'} ${
-					shouldAttachClickHandler ? 'cursor-pointer' : ''
-				} ${isBodyRow && key !== data?.length - 1 ? 'border-b' : ''}`} // Conditional styling for body rows
+				className={`${
+					isBodyRow ? 'h-[72px] hover:bg-black/[0.015]' : 'h-11'
+				} ${shouldAttachClickHandler ? 'cursor-pointer' : ''} ${
+					isBodyRow && key !== data?.length - 1 ? 'border-b' : ''
+				} smooth`} // Conditional styling for body rows
 				key={key}
 			>
 				{child}
@@ -56,7 +59,10 @@ export default function useTable(
 		return returnTableRow(
 			i,
 			rowData.map((r, i) => (
-				<td key={i} className='p-5'>
+				<td
+					key={i}
+					className={`py-5 pl-5 ${i === 0 ? 'font-[500]' : ''}`}
+				>
 					{r}
 				</td>
 			)),

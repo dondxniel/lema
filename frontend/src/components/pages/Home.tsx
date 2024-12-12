@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router';
 // import { users } from '../../constants/dummy-data.constants';
 import { useState } from 'react';
 import pageRoutes from '../../constants/page-routes';
+import { displayedFields } from '../../constants/table.constant';
 import {
 	useGetUsers,
 	useGetUsersCount,
@@ -29,9 +30,7 @@ export default function Home() {
 		<PageLayout title='Users' titleSize='lg'>
 			<Table
 				data={users as unknown as Record<string, string>[]}
-				displayedFields={
-					['name', 'email', 'address'] as (keyof IUser)[]
-				}
+				displayedFields={displayedFields}
 				onRowClick={(user: IUser) =>
 					navigate(pageRoutes.userPosts(user?.id))
 				}

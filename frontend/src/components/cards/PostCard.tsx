@@ -13,16 +13,17 @@ export default function PostCard({ post, userId }: IPostCardProps) {
 				title={post.title}
 				top={
 					<div className='flex justify-end'>
-						<Button onClick={() => setShowDeleteConfirmation(true)}>
+						<Button
+							className='p-1'
+							onClick={() => setShowDeleteConfirmation(true)}
+						>
 							<Trash color='red' />
 						</Button>
 					</div>
 				}
-				className='h-[270px] overflow-hidden flex flex-col '
+				className='h-[300px] overflow-hidden flex flex-col shadow-card'
 			>
-				<div className='line-clamp-[6] overflow-hidden'>
-					{post.body}
-				</div>
+				<div className='line-clamp-[10] text-ellipsis'>{post.body}</div>
 			</CardLayout>
 			<DeleteConfirmationModal
 				id={post.id}

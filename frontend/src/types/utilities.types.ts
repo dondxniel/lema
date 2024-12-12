@@ -6,7 +6,12 @@ import {
 	SetStateAction,
 	TextareaHTMLAttributes,
 } from 'react';
+import { IUser } from './api-responses/users.types';
 
+export type TDisplayedFields = {
+	field: keyof IUser;
+	width: string | number;
+};
 export interface ITableProps {
 	data: Record<string, string>[];
 	dataCount: number;
@@ -15,7 +20,7 @@ export interface ITableProps {
 		| ((_: number | string) => void)
 		| Dispatch<SetStateAction<string | number>>;
 	onRowClick?: Function | (() => void);
-	displayedFields?: string[];
+	displayedFields?: TDisplayedFields[];
 	loading: boolean;
 }
 

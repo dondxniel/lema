@@ -11,6 +11,17 @@ body {
     @apply text-[#535862]
 }
 
+.smooth {
+    @apply transition-all duration-200
+}
 .find{
     @apply border border-red-500
 }
+
+.dynamic-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: unset; /* Disable fixed clamping */
+  }

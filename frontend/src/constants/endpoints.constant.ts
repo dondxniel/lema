@@ -1,4 +1,4 @@
-import { paginationPageSize } from './config';
+import { paginationPageSize } from './table.constant';
 
 const endpoints = {
 	users: (page: number) =>

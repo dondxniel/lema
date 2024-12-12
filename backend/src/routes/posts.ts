@@ -29,7 +29,7 @@ router.delete('/', async (req: Request, res: Response) => {
 			return;
 		}
 		await deletePost(postId);
-		res.status(200).send(
+		res.status(204).send(
 			wrapResHelper(true, messagesConstant.success.deletedPosts, null)
 		);
 	} catch (e) {
@@ -59,7 +59,7 @@ router.post('/', async (req: Request, res: Response) => {
 			);
 
 		const response = await createPost(userId, postTitle, postBody);
-		res.status(200).send(
+		res.status(201).send(
 			wrapResHelper(true, messagesConstant.success.createdPosts, response)
 		);
 	} catch (e) {

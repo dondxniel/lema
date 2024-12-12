@@ -8,6 +8,7 @@ export default function AddPostCard({ userId }: { userId: string }) {
 	return (
 		<>
 			<CardLayout
+				className='hover:shadow smooth-sm'
 				borderType='dashed'
 				onClick={() => setShowNewPost(true)}
 			>

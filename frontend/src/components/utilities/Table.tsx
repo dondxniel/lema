@@ -1,4 +1,4 @@
-import { paginationPageSize } from '../../constants/config';
+import { paginationPageSize } from '../../constants/table.constant';
 import useTable from '../../hooks/component-logic/useTable';
 import { ITableProps } from '../../types/utilities.types';
 import Loader from './Loader';
@@ -24,14 +24,20 @@ export default function Table({
 
 	return (
 		<div>
-			<div className='border rounded overflow-x-auto'>
+			<div className='border rounded overflow-x-auto relative'>
 				{loading ? (
-					<div className='h-[400px] flex items-center justify-center'>
+					<div className='h-[330px] flex items-center justify-center'>
 						<Loader />
 					</div>
 				) : (
-					<table className='text-sm w-layout'>
-						<thead>{headRow}</thead>
+					<table className='text-sm w-layout text-[#535862]'>
+						<colgroup>
+							{displayedFields?.map((field, i) => (
+								<col key={i} style={{ width: field.width }} />
+							))}
+						</colgroup>
+
+						<thead className='font-[500]'>{headRow}</thead>
 						<tbody>{bodyRows}</tbody>
 					</table>
 				)}

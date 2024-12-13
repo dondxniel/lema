@@ -7,7 +7,7 @@ export default function PageLayout({
 	titleSize,
 }: IPageLayout) {
 	return (
-		<div className='space-y-6'>
+		<div className='space-y-6 animate__animated animate__fadeIn'>
 			<div
 				className={`${layoutTitleFontSize(
 					titleSize

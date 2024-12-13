@@ -17,7 +17,7 @@ export default function PostCard({ post, userId }: IPostCardProps) {
 							className='p-1'
 							onClick={() => setShowDeleteConfirmation(true)}
 						>
-							<Trash color='red' />
+							<Trash color='red' size={18} />
 						</Button>
 					</div>
 				}

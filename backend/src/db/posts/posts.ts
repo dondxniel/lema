@@ -4,7 +4,7 @@ import {
 	deletePostTemplate,
 	selectPostsTemplate,
 } from './query-tamplates';
-import { PostResponse } from './types';
+import { Post, PostResponse } from './types';
 
 export const getPosts = (userId: string): Promise<PostResponse> =>
 	new Promise((resolve, reject) => {
@@ -21,8 +21,16 @@ export const getPosts = (userId: string): Promise<PostResponse> =>
 							: result?.user,
 					posts:
 						typeof result?.posts === 'string'
-							? JSON.parse(result?.posts)
-							: result?.posts,
+							? JSON.parse(result?.posts).map((post: Post) =>
+									typeof post === 'string'
+										? JSON.parse(post)
+										: post
+							  )
+							: result?.posts.map((post) =>
+									typeof post === 'string'
+										? JSON.parse(post)
+										: post
+							  ),
 				};
 
 				resolve(newResult as PostResponse);

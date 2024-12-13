@@ -6,3 +6,5 @@ backend/node_modules
 # compiled
 frontend/dist
 backend/dist
+
+.DS_Store

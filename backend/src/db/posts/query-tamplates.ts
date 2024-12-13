@@ -14,6 +14,7 @@ SELECT
             'body', p.body,
             'created_at', p.created_at
         )
+        ORDER BY p.created_at DESC
     ) AS posts
 FROM 
     users u
@@ -36,3 +37,4 @@ INSERT INTO posts (id, user_id, title, body, created_at)
 VALUES (hex(randomblob(16)), ?, ?, ?, strftime('%Y-%m-%dT%H:%M:%S', 'now'))
 RETURNING *
 `;
+

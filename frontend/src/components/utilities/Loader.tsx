@@ -6,7 +6,7 @@ export default function Loader({ fullScreen, className }: ILoaderProps) {
 	function wrapLoader(child: ReactNode) {
 		if (fullScreen)
 			return createPortal(
-				<div className='w-screen h-screen fixed top-0 bottom-0 left-0 right-0 z-[9999]'>
+				<div className='w-screen h-screen bg-white fixed top-0 bottom-0 left-0 right-0 z-[9999]'>
 					{child}
 				</div>,
 				document.getElementsByTagName('body')[0]
@@ -16,7 +16,7 @@ export default function Loader({ fullScreen, className }: ILoaderProps) {
 
 	return wrapLoader(
 		<div
-			className={`flex justify-center items-center w-full h-full ${className}`}
+			className={`flex justify-center items-center w-full h-full  animate__animated animate__fadeIn animate__slower ${className}`}
 		>
 			<div className='lds-ellipsis'>
 				<div></div>

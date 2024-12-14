@@ -8,7 +8,6 @@ const router = Router();
 
 router.get('/', async (req: Request, res: Response) => {
 	// await new Promise((resolve) => setTimeout(resolve, 5000));
-	throw new Error('Sorry, kumbayah... no users to show you.');
 	const pageNumber = Number(req.query.pageNumber) || 0;
 	const pageSize = Number(req.query.pageSize) || 4;
 	if (pageNumber < 0 || pageSize < 1) {

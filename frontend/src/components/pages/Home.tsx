@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 // import { users } from '../../constants/dummy-data.constants';
-import { useState } from 'react';
+import { useQueryState } from 'nuqs';
 import pageRoutes from '../../constants/page-routes';
 import { displayedFields } from '../../constants/table.constant';
 import {
@@ -13,9 +13,12 @@ import Loader from '../utilities/Loader';
 import Table from '../utilities/Table';
 
 export default function Home() {
-	const [page, setPage] = useState<string | number>(1);
+	const [page, setPage] = useQueryState('page', {
+		defaultValue: 1,
+		parse: Number,
+	});
 	const { data: usersData, isLoading: loadingUsersData } = useGetUsers(
-		page as number
+		Number(page)
 	);
 	const { data: countData, isLoading: loadingUsersCount } =
 		useGetUsersCount();
@@ -35,8 +38,10 @@ export default function Home() {
 					navigate(pageRoutes.userPosts(user?.id))
 				}
 				dataCount={countData?.count}
-				page={page}
-				setPage={setPage}
+				page={Number(page)}
+				setPage={(newPage: number | string) =>
+					setPage(newPage as number)
+				}
 				loading={loadingUsersData}
 			/>
 		</PageLayout>

@@ -1,6 +1,5 @@
 import { ArrowLeft } from '@phosphor-icons/react';
 import { Outlet, useNavigate } from 'react-router';
-import pageRoutes from '../../../constants/page-routes';
 import Button from '../../utilities/Button';
 
 export default function UserDetailsLayout() {
@@ -9,7 +8,7 @@ export default function UserDetailsLayout() {
 		<div>
 			<Button
 				iconLeft={<ArrowLeft weight='bold' />}
-				onClick={() => nav(pageRoutes.home)}
+				onClick={() => nav(-1)}
 			>
 				Back to Users
 			</Button>

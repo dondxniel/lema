@@ -18,6 +18,10 @@ export default function useAddPostModal(
 		queryClient.invalidateQueries({
 			queryKey: userPostsKey(userId),
 		});
+		setFormData({
+			title: '',
+			body: '',
+		});
 	});
 	function handleSetFormData(key: string, data: string) {
 		setFormData((prev) => ({
@@ -30,6 +34,10 @@ export default function useAddPostModal(
 			return toast(
 				'You need to fill the form completely before submitting.'
 			);
+		if (formData?.title?.length <= 5)
+			return toast('Post title must be greater than 5 characters.');
+		if (formData?.body?.length <= 5)
+			return toast('Post body must be greater than 5 characters.');
 		mutate({
 			userId,
 			...formData,

@@ -11,7 +11,7 @@ export function layoutTitleFontSize(size?: TTitleSize) {
 }
 
 export function cardLayoutBorderType(type?: TCardBorderTypes) {
-	if (type === 'dashed') return 'border-dashed';
+	if (type === 'dashed') return 'border-long-dashed';
 	if (type === 'dotted') return 'border-dotted';
 	return '';
 }

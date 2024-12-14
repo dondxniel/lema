@@ -9,13 +9,13 @@ export default function AddPostForm({
 	return (
 		<form className='space-y-6'>
 			<Input
-				placeholder='eg. Remote Work: Trends and Challenges'
+				placeholder='Give your post a title'
 				label='Post title'
 				value={formData.title}
 				onChange={(e) => handleSetFormData('title', e?.target?.value)}
 			/>
 			<Textarea
-				placeholder='Enter post content'
+				placeholder='Write something mind-blowing'
 				label='Post content'
 				value={formData.body}
 				onChange={(e) => handleSetFormData('body', e?.target?.value)}

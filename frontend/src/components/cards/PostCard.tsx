@@ -14,10 +14,10 @@ export default function PostCard({ post, userId }: IPostCardProps) {
 				top={
 					<div className='flex justify-end'>
 						<Button
-							className='p-1'
+							className='h-6 w-6 text-center flex items-center justify-center'
 							onClick={() => setShowDeleteConfirmation(true)}
 						>
-							<Trash color='red' size={18} />
+							<Trash color='red' size={12} />
 						</Button>
 					</div>
 				}

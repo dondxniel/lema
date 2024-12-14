@@ -37,7 +37,7 @@ export default function Table({
 							))}
 						</colgroup>
 
-						<thead className='font-[500]'>{headRow}</thead>
+						<thead className='font-medium'>{headRow}</thead>
 						<tbody>{bodyRows}</tbody>
 					</table>
 				)}

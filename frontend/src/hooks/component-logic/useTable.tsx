@@ -61,7 +61,7 @@ export default function useTable(
 			rowData.map((r, i) => (
 				<td
 					key={i}
-					className={`py-5 pl-5 ${i === 0 ? 'font-[500]' : ''}`}
+					className={`py-5 pl-5 ${i === 0 ? 'font-medium' : ''}`}
 				>
 					{r}
 				</td>
@@ -78,7 +78,7 @@ export default function useTable(
 		'head',
 		filteredData.length
 			? Object.keys(filteredData[0]).map((item) => (
-					<td key={item} className='font-normal text-xs px-5'>
+					<td key={item} className='text-xs px-5'>
 						{/**Creating table data cells for the head row */}
 						{_.startCase(item)}
 					</td>

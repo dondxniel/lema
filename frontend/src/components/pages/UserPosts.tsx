@@ -24,7 +24,7 @@ export default function UserPosts() {
 				<Dot size={20} weight='bold' />
 				<div className='font-semibold'>{posts.length} posts</div>
 			</div>
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+			<div className='grid max-[550px]:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 				<AddPostCard userId={id} />
 				{posts.map((item) => (
 					<PostCard key={item.id} post={item} userId={id} />

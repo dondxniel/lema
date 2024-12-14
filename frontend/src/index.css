@@ -24,4 +24,10 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     line-clamp: unset; /* Disable fixed clamping */
-  }
+}
+
+.border-long-dashed {
+    border-width: 1px;
+    border-spacing: 100px;
+    border-style: dashed;
+}

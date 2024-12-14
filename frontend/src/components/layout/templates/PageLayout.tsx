@@ -11,7 +11,7 @@ export default function PageLayout({
 			<div
 				className={`${layoutTitleFontSize(
 					titleSize
-				)} mt-6 font-[500] text-[#181D27]`}
+				)} mt-6 font-medium text-[#181D27]`}
 			>
 				{title}
 			</div>

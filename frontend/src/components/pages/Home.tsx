@@ -8,6 +8,7 @@ import {
 	useGetUsersCount,
 } from '../../hooks/api-integration/tanstack/queries';
 import { IUser } from '../../types/api-responses/users.types';
+import ErrorCard from '../cards/ErrorCard';
 import PageLayout from '../layout/templates/PageLayout';
 import Loader from '../utilities/Loader';
 import Table from '../utilities/Table';
@@ -17,17 +18,36 @@ export default function Home() {
 		defaultValue: 1,
 		parse: Number,
 	});
-	const { data: usersData, isLoading: loadingUsersData } = useGetUsers(
-		Number(page)
-	);
-	const { data: countData, isLoading: loadingUsersCount } =
-		useGetUsersCount();
+	const {
+		data: usersData,
+		isLoading: loadingUsersData,
+		error: getUsersError,
+	} = useGetUsers(Number(page));
+	const {
+		data: countData,
+		isLoading: loadingUsersCount,
+		error: getUsersCountError,
+	} = useGetUsersCount();
 
 	const navigate = useNavigate();
 
 	const users = usersData?.users || [];
 
-	if (loadingUsersCount || !countData) return <Loader fullScreen />;
+	if (loadingUsersCount) return <Loader fullScreen />;
+
+	if (getUsersError || getUsersCountError)
+		return (
+			<ErrorCard
+				msg='Error fetching users data.'
+				subMsg={`${
+					getUsersError
+						? getUsersError
+						: getUsersCountError
+						? getUsersCountError
+						: ''
+				}`}
+			/>
+		);
 
 	return (
 		<PageLayout title='Users' titleSize='lg'>
@@ -37,7 +57,7 @@ export default function Home() {
 				onRowClick={(user: IUser) =>
 					navigate(pageRoutes.userPosts(user?.id))
 				}
-				dataCount={countData?.count}
+				dataCount={countData?.count || 0}
 				page={Number(page)}
 				setPage={(newPage: number | string) =>
 					setPage(newPage as number)

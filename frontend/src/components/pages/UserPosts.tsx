@@ -2,17 +2,23 @@ import { Dot } from '@phosphor-icons/react';
 import { useParams } from 'react-router';
 import { useGetUserPosts } from '../../hooks/api-integration/tanstack/queries';
 import AddPostCard from '../cards/AddPostCard';
+import ErrorCard from '../cards/ErrorCard';
 import PostCard from '../cards/PostCard';
 import PageLayout from '../layout/templates/PageLayout';
 import Loader from '../utilities/Loader';
 
 export default function UserPosts() {
 	const { id } = useParams();
-	const { data, isLoading } = useGetUserPosts(id);
+	const { data, isLoading, error } = useGetUserPosts(id);
 
 	if (!id) return null;
 
 	if (isLoading || !data) return <Loader fullScreen />;
+
+	if (error)
+		return (
+			<ErrorCard msg='Error fetching user posts.' subMsg={`${error}`} />
+		);
 
 	const posts = data?.posts || [];
 	const user = data?.user;

@@ -32,8 +32,8 @@ export default function Table({
 							<Loader />
 						</div>
 					) : (
-						<div>
-							<table className='text-sm w-layout text-[#535862] hidden md:block'>
+						<>
+							<table className='text-sm w-layout text-[#535862] hidden md:table'>
 								<colgroup>
 									{displayedFields?.map((field, i) => (
 										<col
@@ -47,7 +47,7 @@ export default function Table({
 								</colgroup>
 
 								<thead className='font-medium'>{headRow}</thead>
-								<tbody>{bodyRows}</tbody>
+								<tbody className=''>{bodyRows}</tbody>
 							</table>
 							<div className='block md:hidden'>
 								{data?.map((item, i) => (
@@ -81,7 +81,7 @@ export default function Table({
 									</div>
 								))}
 							</div>
-						</div>
+						</>
 					)}
 				</div>
 			</div>

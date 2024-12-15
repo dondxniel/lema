@@ -13,7 +13,7 @@ const Pagination = ({
 
 	return (
 		<div
-			className={`text-[#717680] text-sm font-medium flex flex-col md:flex-row items-center justify-center space-x-1 md:space-x-2 ${
+			className={`text-[#717680] text-xs lg:text-sm font-medium flex flex-col md:flex-row items-center justify-center space-x-1 md:space-x-2 ${
 				disable && 'opacity-50'
 			}`}
 		>

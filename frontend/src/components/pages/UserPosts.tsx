@@ -25,9 +25,9 @@ export default function UserPosts() {
 
 	return (
 		<PageLayout title={user?.name} titleSize='md'>
-			<div className='text-sm flex items-center'>
+			<div className='text-sm flex flex-col md:flex-row items-start md:items-center'>
 				<div>{user?.email}</div>
-				<Dot size={20} weight='bold' />
+				<Dot size={20} weight='bold' className='hidden md:block' />
 				<div className='font-semibold'>{posts.length} posts</div>
 			</div>
 			<div className='grid max-[550px]:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>

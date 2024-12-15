@@ -23,24 +23,62 @@ export default function Table({
 		return null;
 
 	return (
-		<div>
-			<div className='border rounded overflow-x-auto relative'>
-				{loading ? (
-					<div className='h-[330px] flex items-center justify-center'>
-						<Loader />
-					</div>
-				) : (
-					<table className='text-sm w-layout text-[#535862]'>
-						<colgroup>
-							{displayedFields?.map((field, i) => (
-								<col key={i} style={{ width: field.width }} />
-							))}
-						</colgroup>
+		<>
+			<div>
+				<div className='border rounded overflow-x-auto relative'>
+					{loading ? (
+						<div className='h-[330px] flex items-center justify-center'>
+							<Loader />
+						</div>
+					) : (
+						<div>
+							<table className='text-sm w-layout text-[#535862] hidden md:block'>
+								<colgroup>
+									{displayedFields?.map((field, i) => (
+										<col
+											key={i}
+											style={{
+												width:
+													field?.width || undefined,
+											}}
+										/>
+									))}
+								</colgroup>
 
-						<thead className='font-medium'>{headRow}</thead>
-						<tbody>{bodyRows}</tbody>
-					</table>
-				)}
+								<thead className='font-medium'>{headRow}</thead>
+								<tbody>{bodyRows}</tbody>
+							</table>
+							<div className='block md:hidden'>
+								{data?.map((item, i) => (
+									<div
+										key={i}
+										className='p-4 border-b last:border-b-0'
+									>
+										{Object.entries(item).map(
+											([key, value], i) =>
+												displayedFields?.some(
+													(field) =>
+														field.field === key
+												) ? (
+													<div
+														key={i}
+														className='flex py-1'
+													>
+														<span className='font-semibold capitalize'>
+															{key}:{'  '}
+															<span className='font-normal'>
+																{value}
+															</span>
+														</span>
+													</div>
+												) : null
+										)}
+									</div>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
 			</div>
 			<div className='py-5 flex justify-center md:justify-end'>
 				<Pagination
@@ -50,6 +88,6 @@ export default function Table({
 					onPageChange={setPage}
 				/>
 			</div>
-		</div>
+		</>
 	);
 }

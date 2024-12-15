@@ -15,6 +15,7 @@ export interface MakeRequestInterface {
 	params: RequestParams;
 	defaultUrl?: string;
 	customErrorHandler?: (_: string) => void;
+	useBaseUrl?: boolean;
 }
 
 export interface ResponseInterface {
@@ -25,7 +26,7 @@ export interface ResponseInterface {
 
 export interface UseRequestOptions {
 	url?: string;
-	loadOnRender?: boolean;
+	useBaseUrl?: boolean;
 	handleError?: (_: string) => void;
 }
 

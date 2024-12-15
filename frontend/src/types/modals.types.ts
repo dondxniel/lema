@@ -1,3 +1,3 @@
-import { ModalProps } from '@mantine/core';
+import { ModalLayoutProps } from '@/types/layouts.types';
 
-export interface IAddPostModalProps extends ModalProps {}
+export interface IAddPostModalProps extends ModalLayoutProps {}

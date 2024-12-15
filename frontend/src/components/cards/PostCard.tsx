@@ -23,7 +23,9 @@ export default function PostCard({ post, userId }: IPostCardProps) {
 				}
 				className='h-[300px] overflow-hidden flex flex-col shadow-card'
 			>
-				<div className='line-clamp-[10] text-ellipsis'>{post.body}</div>
+				<div className='line-clamp-[11] text-ellipsis leading-[1.5]'>
+					{post.body}
+				</div>
 			</CardLayout>
 			<DeleteConfirmationModal
 				id={post.id}

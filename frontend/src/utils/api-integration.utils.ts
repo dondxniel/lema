@@ -1,3 +1,4 @@
+import { baseURL } from '@/constants/config';
 import { AxiosError, AxiosHeaders, HttpStatusCode } from 'axios';
 import { toast } from 'sonner';
 import axiosInstanceConstant from '../constants/axiosInstance.constant';
@@ -26,6 +27,8 @@ export function apiRes(success: boolean, message: string, data: any) {
 export async function handleErrors(errorMessage: string, showError: boolean) {
 	if (!errorMessage) errorMessage = 'Unknown error.';
 
+	console.log('showError', showError);
+
 	if (showError) toast.error(errorMessage);
 
 	return apiRes(false, errorMessage, null);
@@ -35,11 +38,14 @@ export const makeRequest = async ({
 	method,
 	params,
 	defaultUrl = '',
+	useBaseUrl = true,
 }: MakeRequestInterface): Promise<ResponseInterface> => {
 	const resolvedUrl = params?.url ? params?.url : defaultUrl;
 	const headers = (params?.headers || undefined) as AxiosHeaders;
+
 	try {
 		let response = await axiosInstanceConstant({
+			baseURL: useBaseUrl ? baseURL : 'http://localhost:3000',
 			method,
 			url: `${resolvedUrl}`,
 			data: params.data,
@@ -54,16 +60,17 @@ export const makeRequest = async ({
 		) {
 			return apiRes(true, msg, response.data?.data);
 		}
+
 		return await handleErrors(
 			response?.data?.message,
-			params.showError || true
+			typeof params?.showError === 'undefined' ? true : params?.showError
 		);
 	} catch (e: unknown) {
 		return await handleErrors(
 			(e as TCustomError)?.response?.data?.message ||
 				(e as TCustomError)?.response?.message ||
 				(e as AxiosError)?.message,
-			params.showError || true
+			typeof params?.showError === 'undefined' ? true : params?.showError
 		);
 	}
 };

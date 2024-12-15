@@ -1,18 +1,24 @@
+'use client';
+
 import { ArrowLeft } from '@phosphor-icons/react';
-import { Outlet, useNavigate } from 'react-router';
+import { useRouter } from 'next/navigation';
 import Button from '../../utilities/Button';
 
-export default function UserDetailsLayout() {
-	const nav = useNavigate();
+export default function UserDetailsLayout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	const router = useRouter();
 	return (
 		<div>
 			<Button
 				iconLeft={<ArrowLeft weight='bold' />}
-				onClick={() => nav(-1)}
+				onClick={() => router.back()}
 			>
 				Back to Users
 			</Button>
-			<Outlet />
+			{children}
 		</div>
 	);
 }

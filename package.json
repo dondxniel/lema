@@ -2,7 +2,7 @@
 	"scripts": {
 		"dev": "concurrently \"yarn server\" \"yarn client\"",
 		"server": "cd backend && yarn dev",
-		"client": "cd frontend && yarn start"
+		"client": "cd frontend && yarn dev"
 	},
 	"dependencies": {},
 	"devDependencies": {

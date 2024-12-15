@@ -1,4 +1,6 @@
-import { useNavigate } from 'react-router';
+'use client';
+
+import { useRouter } from 'next/navigation';
 // import { users } from '../../constants/dummy-data.constants';
 import { useQueryState } from 'nuqs';
 import pageRoutes from '../../constants/page-routes';
@@ -29,7 +31,7 @@ export default function Home() {
 		error: getUsersCountError,
 	} = useGetUsersCount();
 
-	const navigate = useNavigate();
+	const router = useRouter();
 
 	const users = usersData?.users || [];
 
@@ -55,7 +57,7 @@ export default function Home() {
 				data={users as unknown as Record<string, string>[]}
 				displayedFields={displayedFields}
 				onRowClick={(user: IUser) =>
-					navigate(pageRoutes.userPosts(user?.id))
+					router.push(pageRoutes.userPosts(user?.id))
 				}
 				dataCount={countData?.count || 0}
 				page={Number(page)}

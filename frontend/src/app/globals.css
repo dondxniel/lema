@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './styles/loading-animation.css';
+@import '../styles/loading-animation.css';
 
 :root{
     --animate-duration: 0.2s;
@@ -14,6 +14,7 @@ body {
 .smooth {
     @apply transition-all duration-200
 }
+
 .find{
     @apply border border-red-500
 }

@@ -14,28 +14,45 @@ import { queryFnWrapper } from '../../../utils/api-integration.utils';
 import useRequest from '../../useRequest';
 
 export function useGetUsers(page: number) {
-	const { get } = useRequest(endpoints.users(page));
+	const { get } = useRequest({
+		url: endpoints.usersInternal(page),
+		useBaseUrl: false,
+		handleError(_) {},
+	});
 	return useQuery<IUserEndpointResponseData>({
 		queryKey: usersKey(page),
 		queryFn: async () =>
-			await queryFnWrapper<IUserEndpointResponseData>(get),
+			await queryFnWrapper<IUserEndpointResponseData>(() =>
+				get({ showError: false })
+			),
 	});
 }
 
 export function useGetUsersCount() {
-	const { get } = useRequest(endpoints.usersCount);
+	const { get } = useRequest({
+		url: endpoints.usersCount,
+		handleError(_) {},
+	});
 	return useQuery<IUserCountEndpointResponseData>({
 		queryKey: usersCountKey,
 		queryFn: async () =>
-			await queryFnWrapper<IUserCountEndpointResponseData>(get),
+			await queryFnWrapper<IUserCountEndpointResponseData>(() =>
+				get({ showError: false })
+			),
 	});
 }
 
 export function useGetUserPosts(userId?: string) {
-	const { get } = useRequest(endpoints.userPosts(userId || ''));
+	const { get } = useRequest({
+		url: endpoints.userPosts(userId || ''),
+		handleError(_) {},
+	});
 	return useQuery<IPostResponseData>({
 		queryKey: userPostsKey(userId || ''),
-		queryFn: async () => await queryFnWrapper<IPostResponseData>(get),
+		queryFn: async () =>
+			await queryFnWrapper<IPostResponseData>(() =>
+				get({ showError: false })
+			),
 		enabled: !!userId,
 	});
 }

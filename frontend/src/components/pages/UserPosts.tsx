@@ -1,5 +1,7 @@
+'use client';
+
 import { Dot } from '@phosphor-icons/react';
-import { useParams } from 'react-router';
+import { useParams } from 'next/navigation';
 import { useGetUserPosts } from '../../hooks/api-integration/tanstack/queries';
 import AddPostCard from '../cards/AddPostCard';
 import ErrorCard from '../cards/ErrorCard';
@@ -8,7 +10,8 @@ import PageLayout from '../layout/templates/PageLayout';
 import Loader from '../utilities/Loader';
 
 export default function UserPosts() {
-	const { id } = useParams();
+	const params = useParams();
+	const id = params?.id as string;
 	const { data, isLoading, error } = useGetUserPosts(id);
 
 	if (!id) return null;

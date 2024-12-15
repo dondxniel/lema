@@ -20,7 +20,7 @@ export default function Loader({ fullScreen, className }: ILoaderProps) {
 
 	return wrapLoader(
 		<div
-			className={`flex justify-center items-center w-full h-full  animate__animated animate__fadeIn animate__slower bg-white ${className}`}
+			className={`flex justify-center items-center w-full h-full  animate__animated animate__fadeIn animate__slower ${className}`}
 		>
 			<div className='lds-ellipsis'>
 				<div></div>

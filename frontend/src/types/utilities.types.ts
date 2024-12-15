@@ -19,7 +19,7 @@ export interface ITableProps {
 	setPage:
 		| ((_: number | string) => void)
 		| Dispatch<SetStateAction<string | number>>;
-	onRowClick?: Function | (() => void);
+	onRowClick?: Function | ((_: IUser) => void);
 	displayedFields?: TDisplayedFields[];
 	loading: boolean;
 }

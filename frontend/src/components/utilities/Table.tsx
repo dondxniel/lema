@@ -1,5 +1,6 @@
 import { paginationPageSize } from '../../constants/table.constant';
 import useTable from '../../hooks/component-logic/useTable';
+import { IUser } from '../../types/api-responses/users.types';
 import { ITableProps } from '../../types/utilities.types';
 import Loader from './Loader';
 import Pagination from './Pagination';
@@ -52,7 +53,11 @@ export default function Table({
 								{data?.map((item, i) => (
 									<div
 										key={i}
-										className='p-4 border-b last:border-b-0'
+										className='p-4 border-b last:border-b-0 cursor-pointer'
+										onClick={() =>
+											onRowClick &&
+											onRowClick(item as unknown as IUser)
+										}
 									>
 										{Object.entries(item).map(
 											([key, value], i) =>

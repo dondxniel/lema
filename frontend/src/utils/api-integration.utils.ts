@@ -45,7 +45,7 @@ export const makeRequest = async ({
 
 	try {
 		let response = await axiosInstanceConstant({
-			baseURL: useBaseUrl ? baseURL : 'http://localhost:3000',
+			baseURL: useBaseUrl ? baseURL : '',
 			method,
 			url: `${resolvedUrl}`,
 			data: params.data,

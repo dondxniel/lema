@@ -1,8 +1,7 @@
-# Project Name
+# LEMA.AI Assessment 
 
 ## Github Url
 [Click here to go](https://github.com/dondxniel/lema)
-# Project Name
 
 ## Live Url
 [Click here to go](https://lema-seven.vercel.app)
